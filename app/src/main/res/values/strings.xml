@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Mercado-Laboral</string>
+    <string name="app_name_login">MÓDULO DE EMPADRONAMIENTO</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_surveys">Cuestionarios</string>
+    <string name="title_sendData">Enviar Datos</string>
+    <string name="title_network">Descarga</string>
+    <string name="title_backup">Respaldo</string>
+    <string name="login_password">Contraseña</string>
+    <string name="login_user">Usuario</string>
+    <string name="login_title">Iniciar Sesión</string>
+
+
+    <!-- Overriding the default values of the tableView -->
+
+    <string name="option_logout">Cerrar Sesión</string>
+    <string name="option_log">Historial</string>
+
+    <string name="popup_revisarcuestionario">Abrir Cuestionario</string>
+    <string name="popup_listarerrores">Errores de Estructura</string>
+    <string name="popup_eliminarcuestionario">Eliminar Cuestionario</string>
+    <string name="popup_codigoecenso">Ver/Generar E-Censo</string>
+    <!--    <string name="body_inicio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nibh arcu, fringilla at lobortis nec, tristique ultrices lectus. Mauris ac orci porttitor, gravida erat non, rhoncus turpis. Aliquam vitae scelerisque massa. Aliquam fermentum viverra mi id lobortis. Integer mattis, metus quis aliquet eleifend, tortor velit euismod risus, eget malesuada lectus nulla id quam. Aenean eget aliquam mi. Vestibulum sed risus non nunc tincidunt</string>-->
+    <string name="body_menu_encuestas">Módulo que contiene la carga de trabajo para crear cuestionarios, avance de trabajo y visualización de mapas.</string>
+    <string name="body_menu_enviardatos">Módulo para realizar envío de datos al servidor de forma manual. Envío por muestra o cuestionarios individuales.</string>
+    <string name="body_menu_red">Módulo para descargar mapas y asignaciones de forma manual.</string>
+    <string name="body_menu_respaldo">Módulo para realizar los respaldos de la información almacenada en el dispositivo.</string>
+    <string name="AppNameFinal">Mercado Laboral</string>
+    <!--    <string name="body_datos_trabajo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nibh arcu, fringilla at lobortis nec, tristique ultrices lectus. Mauris ac orci porttitor, gravida erat non, rhoncus turpis. Aliquam vitae scelerisque massa. Aliquam fermentum viverra mi id lobortis. Integer mattis</string>-->
+</resources>

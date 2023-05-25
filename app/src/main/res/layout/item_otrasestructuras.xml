@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvOtraEstructura"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:checkable="true"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardBackgroundColor="@color/white2"
+        app:cardCornerRadius="0dp"
+        app:strokeColor="@color/stroke_color"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/tvOEInfo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:text="OTRA ESTRUCTURA"
+                android:textColor="@color/black"
+                android:textSize="@dimen/list_captura_vivienda" />
+            <!--
+                        <TextView
+                            android:id="@+id/tvVHJefeInfo"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="oRLANDO GUTIERREZ"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/list_captura_vivienda" />-->
+
+            <!--            <ImageButton
+                            android:id="@+id/ibAddHogar"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:background="@color/white"
+                            android:contentDescription="AddHogar"
+                            android:minWidth="400dp"
+                            android:minHeight="50dp"
+                            android:src="@drawable/ic_add_circle_outline" />-->
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

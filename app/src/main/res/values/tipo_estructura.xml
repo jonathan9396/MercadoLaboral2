@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="estructuras">
+        <item>1- Comercio o servicio</item>
+        <item>2- Institución</item>
+        <item>3- Centro educativo</item>
+        <item>4- Industria</item>
+        <item>5- Salud</item>
+        <item>6- Servicios públicos</item>
+        <item>7- Centros religiosos</item>
+        <item>8- Recreativo o cultural</item>
+        <item>9- Vivienda en ruina o destruida</item>
+        <item>10-Otra estructura que no es vivienda</item>
+    </string-array>
+</resources>

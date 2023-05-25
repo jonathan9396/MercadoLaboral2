@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.mercadolaboral2.ui.menu1_home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_surveys"
+        android:name="com.example.mercadolaboral2.ui.menu2_survey.SurveyFragment"
+        android:label="@string/title_surveys"
+        tools:layout="@layout/fragment_survey" />
+
+    <fragment
+        android:id="@+id/navigation_sendData"
+        android:name="com.example.mercadolaboral2.ui.menu3_senddata.EnvioDeDatosFragment"
+        android:label="@string/title_sendData"
+        tools:layout="@layout/fragment_survey" />
+
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_network"-->
+<!--        android:name="censoemp_dev_01enu4_network.NetworkFragment"-->
+<!--        android:label="@string/title_network"-->
+<!--        tools:layout="@layout/network_fragment" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_backup"-->
+<!--        android:name="censoemp_dev_01enu5_backup.BackupFragment"-->
+<!--        android:label="@string/title_backup"-->
+<!--        tools:layout="@layout/backup_fragment" />-->
+</navigation>

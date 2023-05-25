@@ -1,0 +1,13 @@
+﻿[Run Information]
+Version=CSPro 7.6
+AppType=Entry
+
+[DataEntryInit]
+Interactive=Ask
+Key=
+
+[Files]
+Application=.\cen2020.pen
+
+
+[Parameters]

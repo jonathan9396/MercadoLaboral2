@@ -1,0 +1,624 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 3,
+    "identityHash": "53cbb42f4d23366775558a435608910d",
+    "entities": [
+      {
+        "tableName": "usuarios",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idUsuarios` INTEGER NOT NULL, `rol` TEXT, `region` TEXT, `zona` TEXT, `numeracion` TEXT, `codigo` TEXT, `nombreUsuario` TEXT, `nombre` TEXT, `contrasena` TEXT, `fechaCreacion` INTEGER, `fechaModificacion` INTEGER, `fechaUltimaConexion` INTEGER, PRIMARY KEY(`idUsuarios`))",
+        "fields": [
+          {
+            "fieldPath": "idUsuarios",
+            "columnName": "idUsuarios",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rol",
+            "columnName": "rol",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "region",
+            "columnName": "region",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "zona",
+            "columnName": "zona",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "numeracion",
+            "columnName": "numeracion",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "codigo",
+            "columnName": "codigo",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nombreUsuario",
+            "columnName": "nombreUsuario",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nombre",
+            "columnName": "nombre",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "contrasena",
+            "columnName": "contrasena",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fechaCreacion",
+            "columnName": "fechaCreacion",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fechaModificacion",
+            "columnName": "fechaModificacion",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fechaUltimaConexion",
+            "columnName": "fechaUltimaConexion",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idUsuarios"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "segmentos",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `regionId` TEXT, `zonaId` TEXT, `subZonaId` TEXT, `provinciaId` TEXT, `distritoId` TEXT, `corregimientoId` TEXT, `lugarPobladoId` TEXT, `lugarPobladoDescripcion` TEXT, `barrioId` TEXT, `barrioDescripcion` TEXT, `segmentoId` TEXT, `divisionId` TEXT, `estado` TEXT, `cuestionarios` TEXT, `inconsistencias` INTEGER NOT NULL, `empadronadorId` TEXT, `fechaDeHabilitación` TEXT, `fechaPrimeraDescarga` TEXT, `fechaUltimaDescarga` TEXT, `fechaUltimaCarga` TEXT, `fechaDeRevisado` TEXT, `asignacionPrincipal` TEXT, `asignacionAlterna` INTEGER NOT NULL, `provNombre` TEXT, `distNombre` TEXT, `corregNombre` TEXT, `area` INTEGER NOT NULL, `detalle` TEXT, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "regionID",
+            "columnName": "regionId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "zonaID",
+            "columnName": "zonaId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "subZonaID",
+            "columnName": "subZonaId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "provinciaID",
+            "columnName": "provinciaId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "distritoID",
+            "columnName": "distritoId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "corregimientoID",
+            "columnName": "corregimientoId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "lugarPobladoID",
+            "columnName": "lugarPobladoId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "lugarPobladoDescripcion",
+            "columnName": "lugarPobladoDescripcion",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "barrioID",
+            "columnName": "barrioId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "barrioDescripcion",
+            "columnName": "barrioDescripcion",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "segmentoID",
+            "columnName": "segmentoId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "divisionID",
+            "columnName": "divisionId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "estado",
+            "columnName": "estado",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cuestionarios",
+            "columnName": "cuestionarios",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "inconsistencias",
+            "columnName": "inconsistencias",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "empadronadorID",
+            "columnName": "empadronadorId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fechaDeHabilitacion",
+            "columnName": "fechaDeHabilitación",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fechaPrimeraDescarga",
+            "columnName": "fechaPrimeraDescarga",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fechaUltimaDescarga",
+            "columnName": "fechaUltimaDescarga",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fechaUltimaCarga",
+            "columnName": "fechaUltimaCarga",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fechaDeRevisado",
+            "columnName": "fechaDeRevisado",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "asignacionPrincipal",
+            "columnName": "asignacionPrincipal",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "asignacionAlterna",
+            "columnName": "asignacionAlterna",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "provNombre",
+            "columnName": "provNombre",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "distNombre",
+            "columnName": "distNombre",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "corregNombre",
+            "columnName": "corregNombre",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "area",
+            "columnName": "area",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "detalle",
+            "columnName": "detalle",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "logerrors",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`llave` TEXT NOT NULL, `error` TEXT, `fechaError` TEXT, PRIMARY KEY(`llave`))",
+        "fields": [
+          {
+            "fieldPath": "llave",
+            "columnName": "llave",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "error",
+            "columnName": "error",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fechaError",
+            "columnName": "fechaError",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "llave"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "cuestionarios",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`llave` TEXT NOT NULL, `codigoSegmento` TEXT, `provinciaID` TEXT, `distritoID` TEXT, `corregimientoID` TEXT, `subzona` TEXT, `segmento` TEXT, `division` TEXT, `empadronador` TEXT, `jefe` TEXT, `numEmpadronador` TEXT, `vivienda` TEXT, `hogar` TEXT, `datos` TEXT, `datosJson` TEXT, `erroresEstructura` TEXT, `estado_cuestionario` INTEGER NOT NULL, `fechaCreacion` TEXT, `fechaModificacion` TEXT, `fechaRecepcion` TEXT, `fechaEntrada` TEXT, `flagEnvio` INTEGER NOT NULL, `flagPrimerEnvio` INTEGER NOT NULL, `notas` TEXT, `revisado` INTEGER, `codigoECenso` TEXT, PRIMARY KEY(`llave`))",
+        "fields": [
+          {
+            "fieldPath": "llave",
+            "columnName": "llave",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "codigoSegmento",
+            "columnName": "codigoSegmento",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "provinciaID",
+            "columnName": "provinciaID",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "distritoID",
+            "columnName": "distritoID",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "corregimientoID",
+            "columnName": "corregimientoID",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "subzona",
+            "columnName": "subzona",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "segmento",
+            "columnName": "segmento",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "division",
+            "columnName": "division",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "empadronador",
+            "columnName": "empadronador",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "jefe",
+            "columnName": "jefe",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "numEmpadronador",
+            "columnName": "numEmpadronador",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "vivienda",
+            "columnName": "vivienda",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hogar",
+            "columnName": "hogar",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "datos",
+            "columnName": "datos",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "datosJson",
+            "columnName": "datosJson",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "erroresEstructura",
+            "columnName": "erroresEstructura",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "estado",
+            "columnName": "estado_cuestionario",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fechaCreacion",
+            "columnName": "fechaCreacion",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fechaModificacion",
+            "columnName": "fechaModificacion",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fechaRecepcion",
+            "columnName": "fechaRecepcion",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fechaEntrada",
+            "columnName": "fechaEntrada",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "flagEnvio",
+            "columnName": "flagEnvio",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "flagPrimerEnvio",
+            "columnName": "flagPrimerEnvio",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "notas",
+            "columnName": "notas",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "revisado",
+            "columnName": "revisado",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "codigoECenso",
+            "columnName": "codigoECenso",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "llave"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "otrasEstructuras",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`llave` TEXT NOT NULL, `codigoSegmento` TEXT, `provinciaID` TEXT, `distritoID` TEXT, `corregimientoID` TEXT, `subzona` TEXT, `segmento` TEXT, `division` TEXT, `numEstructura` TEXT, `tipoEstructura` INTEGER NOT NULL, `observacion` TEXT, `empadronador` TEXT, `numEmpadronador` TEXT, `fechaCreacion` TEXT, `fechaModificacion` TEXT, `fechaRecepcion` TEXT, `fechaEntrada` TEXT, `localizacion` TEXT, `flagEnvio` INTEGER NOT NULL, `flagPrimerEnvio` INTEGER NOT NULL, PRIMARY KEY(`llave`))",
+        "fields": [
+          {
+            "fieldPath": "llave",
+            "columnName": "llave",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "codigoSegmento",
+            "columnName": "codigoSegmento",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "provinciaID",
+            "columnName": "provinciaID",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "distritoID",
+            "columnName": "distritoID",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "corregimientoID",
+            "columnName": "corregimientoID",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "subzona",
+            "columnName": "subzona",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "segmento",
+            "columnName": "segmento",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "division",
+            "columnName": "division",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "numEstructura",
+            "columnName": "numEstructura",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tipoEstructura",
+            "columnName": "tipoEstructura",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "observacion",
+            "columnName": "observacion",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "empadronador",
+            "columnName": "empadronador",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "numEmpadronador",
+            "columnName": "numEmpadronador",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fechaCreacion",
+            "columnName": "fechaCreacion",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fechaModificacion",
+            "columnName": "fechaModificacion",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fechaRecepcion",
+            "columnName": "fechaRecepcion",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fechaEntrada",
+            "columnName": "fechaEntrada",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "localizacion",
+            "columnName": "localizacion",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "flagEnvio",
+            "columnName": "flagEnvio",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "flagPrimerEnvio",
+            "columnName": "flagPrimerEnvio",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "llave"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '53cbb42f4d23366775558a435608910d')"
+    ]
+  }
+}

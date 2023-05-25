@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/popup_verobservacion"
+        android:title="Ver / Editar observación" />
+    <item
+        android:id="@+id/popup_gps"
+        android:title="Actualizar localización" />
+    <item
+        android:id="@+id/popup_eliminarotraestructura"
+        android:title="Eliminar estructura" />
+</menu>

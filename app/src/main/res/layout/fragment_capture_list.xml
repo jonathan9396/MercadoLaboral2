@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.menu2_survey.capture.CaptureFragment">
+
+    <TextView
+        android:id="@+id/tvlocalizacion"
+        style="@style/pantallasTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Región:  - Zona: " />
+
+    <TextView
+        style="@style/pantallasTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seleccionar Semana:" />
+
+    <Spinner
+        android:id="@+id/spinnerSubzonaCuestionario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="20dp"
+        android:background="@drawable/style_spinner1"
+        android:minHeight="48dp"
+        android:spinnerMode="dialog" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            style="@style/capturaTitulos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1 "
+            android:text="UPM" />
+
+        <TextView
+            style="@style/capturaTitulos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Estado" />
+
+        <TextView
+            style="@style/capturaTitulos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:text="Cuestionarios" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewSegmentos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:context=".ui.menu2_survey.capture.CaptureFragment"
+
+        tools:listitem="@layout/items_capture" />
+</LinearLayout>

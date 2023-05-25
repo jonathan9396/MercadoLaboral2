@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".ui.menu2_survey.capture.cuestionariosVivienda.viviendahogar.ViviendaHogarDialogFragment">
+<!--
+    <ImageView
+        android:id="@+id/ivCloseViviendasHogar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="18dp"
+        android:contentDescription="Cerrar dialogo"
+        android:src="@drawable/ic_close"
+        app:tint="@color/black" />-->
+
+    <TextView
+        style=""
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Lista de Cuestionarios"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvTituloSubzona"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="start"
+        android:text="SubZona: 1 "
+        android:textColor="@color/black"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tvTituloSegmento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="start"
+        android:text="Segmento: 010203 - 9874"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvViviendasHogar"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        tools:context=".ui.menu2_survey.capture.cuestionariosVivienda.viviendahogar.ViviendaHogarDialogFragment"
+        tools:listitem="@layout/item_viviendashogar" />
+
+    <Button
+        android:id="@+id/btnAgregarVivienda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="15dp"
+        android:text="Agregar Vivienda"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/blueSecondary" />
+</LinearLayout>
