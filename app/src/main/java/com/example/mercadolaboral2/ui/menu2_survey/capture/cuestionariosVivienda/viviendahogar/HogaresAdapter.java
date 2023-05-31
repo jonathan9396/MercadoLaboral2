@@ -37,20 +37,20 @@ public class HogaresAdapter extends RecyclerView.Adapter<HogaresAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if (cuestionariosList != null) {
             Cuestionarios cuestionarios = cuestionariosList.get(position + 1);
-            if (cuestionarios.getFechaAsignacion() == 0)
+            if (cuestionarios.getEstado() == 0)
                 holder.cvHogar.setCardBackgroundColor(Color.rgb(255, 160, 122));
-            if (cuestionarios.getFechaAsignacion() == 1)
+            if (cuestionarios.getEstado() == 1)
                 holder.cvHogar.setCardBackgroundColor(Color.rgb(255, 255, 155));
-            if (cuestionarios.getFechaAsignacion() == 2)
+            if (cuestionarios.getEstado() == 2)
                 holder.cvHogar.setCardBackgroundColor(Color.rgb(169, 208, 142));
-            if (cuestionarios.getFechaAsignacion() == 3)
+            if (cuestionarios.getEstado() == 3)
                 holder.cvHogar.setCardBackgroundColor(Color.rgb(189, 215, 238));
 
             holder.tvHSegmentoInfo.setText(String.format("VIV %s - HOG %s",
                     cuestionarios.getJefe(), cuestionarios.getHogar()));
 //            holder.tvHDivisonInfo.setText(String.format("HOG.: %s", cuestionarios.getHogar()));
-            if (cuestionarios.getFechaActualizacion() != null
-                    && cuestionarios.getFechaActualizacion().length() > 4)
+            if (cuestionarios.getErroresEstructura() != null
+                    && cuestionarios.getErroresEstructura().length() > 4)
                 holder.vHogarInconsistencia.setBackgroundColor(Color.RED);
             else
                 holder.vHogarInconsistencia.setBackgroundColor(Color.BLACK);

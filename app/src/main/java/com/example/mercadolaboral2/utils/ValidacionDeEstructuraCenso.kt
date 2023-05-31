@@ -285,8 +285,8 @@ class ValidacionDeEstructuraCenso(vivienda: String, json: JsonObject) {
         val viviendaCuestionario =
             cuestionariosFiltrados.firstOrNull { it.otraReferencia == "1" } ?: return null
 
-        if (viviendaCuestionario.empadronadorId != null) {
-            val viviendaObject = JsonParser().parse(viviendaCuestionario.empadronadorId)
+        if (viviendaCuestionario.datosJson != null) {
+            val viviendaObject = JsonParser().parse(viviendaCuestionario.datosJson)
                 .asJsonObject
                 .getAsJsonObject("REC_VIVIENDA")
 

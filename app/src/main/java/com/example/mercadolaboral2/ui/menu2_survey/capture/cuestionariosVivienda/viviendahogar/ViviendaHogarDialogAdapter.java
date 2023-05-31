@@ -47,7 +47,7 @@ public class ViviendaHogarDialogAdapter
     private final ViviendaHogarViewModel viewModel;
     private List<List<Cuestionarios>> cuestionariosViviendaHogaresList;
     private HogaresAdapter hogaresAdapter;
-    private List<List<EntrevistaBase>> entrevistaViviendaHogaresList;
+    private List<List<EntrevistaBase>> entrevistaViviendaHogaresListt;
 
 
     public ViviendaHogarDialogAdapter(ViviendaHogarViewModel viewModel, Muestra muestra,
@@ -59,7 +59,7 @@ public class ViviendaHogarDialogAdapter
         this.cuestionariosViviendaHogaresList = cuestionariosViviendaHogares;
         this.onViviendaHogarListener = onViviendaHogarListener;
         this.muestra = muestra;
-        this.entrevistaViviendaHogaresList = entrevistaViviendaHogares;
+        this.entrevistaViviendaHogaresListt = entrevistaViviendaHogares;
     }
 
     @NonNull

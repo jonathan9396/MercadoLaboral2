@@ -42,7 +42,7 @@ public interface CensoApiService {
 //            @Path("empadronadorID") String empadronadorID,
 //            @Query("filtrados") String tipo);
 
-    @GET("Muestra/todos/{empadronadorID}")
+    @GET("muestras/empadronador/EPM002")
     LiveData<ApiResponse<List<GetSegmentosResponse>>> getSegmentosAsignadosNuevosFiltro(
             @Path("empadronadorID") String empadronadorID,//
             @Query("filtrados") String tipo);

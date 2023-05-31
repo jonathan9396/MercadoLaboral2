@@ -107,6 +107,8 @@ public class CensoRepository {
     //    private final UsuariosDao usuariosDao;
     private final SegmentosDao segmentosDao;
     private final CuestionariosDao cuestionariosDAO;
+
+    private final EntrevistaBaseDao entrevistaBaseDao;
     private final OtrasEstructurasDao otrasEstructurasDAO;
     private final AppExecutors appExecutors;
     private final RateLimiter<String> repoListRateLimit = new RateLimiter<>(30, TimeUnit.MINUTES);
@@ -119,6 +121,8 @@ public class CensoRepository {
         segmentosDao = directorioRoomDatabase.getSegmentosDAO();
         cuestionariosDAO = directorioRoomDatabase.getCuestionariosDAO();
         otrasEstructurasDAO = directorioRoomDatabase.getOtrasEstructurasDAO();
+        entrevistaBaseDao = directorioRoomDatabase.getEntrevistaBaseDao();
+
 
         CensoClient censoClient = CensoClient.getInstance();
         MapClient mapClient = MapClient.getInstance();
@@ -523,7 +527,7 @@ public class CensoRepository {
     }
 
     public void addVivienda(EntrevistaBase nuevaVivienda) {
-        appExecutors.diskIO().execute(() -> EntrevistaBaseDao.addVivienda(nuevaVivienda));
+        appExecutors.diskIO().execute(() -> entrevistaBaseDao.addVivienda(nuevaVivienda));
     }
 
     public void addOtraEstructura(OtrasEstructuras otrasEstructuras) {
@@ -829,7 +833,7 @@ public class CensoRepository {
         processNotifier.setText("Espere...");
         processNotifier.show();
         Cuestionarios cuestionarioEnv = cuestionarioSelected.get(0);
-        cuestionarioEnv.setResultadoId("\uFEFF" + cuestionarioEnv.getResultadoId());
+        cuestionarioEnv.setDatos("\uFEFF" + cuestionarioEnv.getDatos());
         Call<Void> callSendCuestionario = censoApiService.sendCuestionario(cuestionarioEnv);
         callSendCuestionario.enqueue(new Callback<Void>() {
             @Override
@@ -944,7 +948,7 @@ public class CensoRepository {
             processNotifier.setText("Espere...");
             processNotifier.show();
             Cuestionarios cuestionarioEnv = cuestionarioSelected.get(x);
-            cuestionarioEnv.setResultadoId("\uFEFF" + cuestionarioEnv.getResultadoId());
+            cuestionarioEnv.setDatos("\uFEFF" + cuestionarioEnv.getDatos());
 
             Call<Void> call = censoApiService.sendCuestionario(cuestionarioEnv);
             call.enqueue(new Callback<Void>() {
@@ -1595,53 +1599,53 @@ public class CensoRepository {
         return muestra;
     }
 
-    public LiveData<Resource<Cuestionarios>> getCodigoECensoCall(Cuestionarios cuestionarios) {
-        return new NetworkBoundResource<Cuestionarios, CodigoAccesoResponse>(appExecutors) {
-            @Override
-            protected void saveCallResult(@NonNull CodigoAccesoResponse item) {
-                if (item.isExitoso()) {
-                    if (item.getValorRetorno() != null && item.getValorRetorno().getToken() != null) {
-                        cuestionarios.setCodigoECenso(item.getValorRetorno().getToken());
-                        cuestionarios.setECenso(true);
-                        cuestionariosDAO.actualizarCodigoCenso(cuestionarios);
-                    } else {
-                        cuestionarios.setFechaActualizacion(item.getErrores().toString());
-                    }
-                } else {
-                    if (item.getErrores() != null) {
-                        if (!item.getErrores().get(0).trim().equals("")) {
-                            String cadenaCodigo = item.getErrores().get(0);
-                            cuestionarios.setCodigoECenso(cadenaCodigo.substring(
-                                    cadenaCodigo.lastIndexOf(":") + 1).trim());
-                            cuestionarios.setECenso(true);
-                        }
-                        cuestionarios.setFechaActualizacion(item.getErrores().toString());
-                        cuestionariosDAO.actualizarCodigoCenso(cuestionarios);
-                    }
-                }
-            }
-
-            @Override
-            protected boolean shouldFetch(@Nullable Cuestionarios data) {
-                return Objects.requireNonNull(data).getCodigoECenso() == null;
-            }
-
-            @NonNull
-            @Override
-            protected LiveData<Cuestionarios> loadFromDb() {
-                return cuestionariosDAO.getCuestionarioECenso(cuestionarios.getEntrevistaId());
-            }
-
-            @NonNull
-            @Override
-            protected LiveData<ApiResponse<CodigoAccesoResponse>> createCall() {
-                return censoApiService.sendCodigoECenso(cuestionarios.getEntrevistaId());
-            }
-
-            @Override
-            protected void onFetchFailed() {
-                repoListRateLimit.reset(SharedPreferencesManager.getSomeStringValue(AppConstants.PREF_USERNAME));
-            }
-        }.asLiveData();
-    }
+//    public LiveData<Resource<Cuestionarios>> getCodigoECensoCall(Cuestionarios cuestionarios) {
+//        return new NetworkBoundResource<Cuestionarios, CodigoAccesoResponse>(appExecutors) {
+//            @Override
+//            protected void saveCallResult(@NonNull CodigoAccesoResponse item) {
+//                if (item.isExitoso()) {
+//                    if (item.getValorRetorno() != null && item.getValorRetorno().getToken() != null) {
+//                        cuestionarios.setCodigoECenso(item.getValorRetorno().getToken());
+//                        cuestionarios.setECenso(true);
+//                        cuestionariosDAO.actualizarCodigoCenso(cuestionarios);
+//                    } else {
+//                        cuestionarios.setFechaActualizacion(item.getErrores().toString());
+//                    }
+//                } else {
+//                    if (item.getErrores() != null) {
+//                        if (!item.getErrores().get(0).trim().equals("")) {
+//                            String cadenaCodigo = item.getErrores().get(0);
+//                            cuestionarios.setCodigoECenso(cadenaCodigo.substring(
+//                                    cadenaCodigo.lastIndexOf(":") + 1).trim());
+//                            cuestionarios.setECenso(true);
+//                        }
+//                        cuestionarios.setFechaActualizacion(item.getErrores().toString());
+//                        cuestionariosDAO.actualizarCodigoCenso(cuestionarios);
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            protected boolean shouldFetch(@Nullable Cuestionarios data) {
+//                return Objects.requireNonNull(data).getCodigoECenso() == null;
+//            }
+//
+//            @NonNull
+//            @Override
+//            protected LiveData<Cuestionarios> loadFromDb() {
+//                return cuestionariosDAO.getCuestionarioECenso(cuestionarios.getEntrevistaId());
+//            }
+//
+//            @NonNull
+//            @Override
+//            protected LiveData<ApiResponse<CodigoAccesoResponse>> createCall() {
+//                return censoApiService.sendCodigoECenso(cuestionarios.getEntrevistaId());
+//            }
+//
+//            @Override
+//            protected void onFetchFailed() {
+//                repoListRateLimit.reset(SharedPreferencesManager.getSomeStringValue(AppConstants.PREF_USERNAME));
+//            }
+//        }.asLiveData();
+//    }
 }

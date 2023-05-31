@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "69290be7cb89e635787e75c5e864586c",
+    "identityHash": "faf4807fd3c886ff25a9cc71943f3140",
     "entities": [
       {
         "tableName": "usuarios",
@@ -288,83 +288,47 @@
       },
       {
         "tableName": "cuestionarios",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`llave` TEXT NOT NULL, `codigoSegmento` TEXT, `provinciaID` TEXT, `distritoID` TEXT, `corregimientoID` TEXT, `subzona` TEXT, `segmento` TEXT, `division` TEXT, `empadronador` TEXT, `jefe` TEXT, `numEmpadronador` TEXT, `vivienda` TEXT, `hogar` TEXT, `datos` TEXT, `datosJson` TEXT, `erroresEstructura` TEXT, `estado_cuestionario` INTEGER NOT NULL, `fechaCreacion` TEXT, `fechaModificacion` TEXT, `fechaRecepcion` TEXT, `fechaEntrada` TEXT, `flagEnvio` INTEGER NOT NULL, `flagPrimerEnvio` INTEGER NOT NULL, `notas` TEXT, `revisado` INTEGER, `codigoEcenso` TEXT, `eCenso` INTEGER NOT NULL, PRIMARY KEY(`llave`), FOREIGN KEY(`codigoSegmento`) REFERENCES `muestra`(`muestraId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`entrevistaId` TEXT NOT NULL, `entrevistaBaseId` TEXT NOT NULL, `muestraId2` TEXT, `entrevistaNum` INTEGER NOT NULL, `hogar` TEXT, `recorrido` TEXT, `identificacion` TEXT, `datos` TEXT, `notas` TEXT, `datosJson` TEXT, `lugarPoblado` TEXT, `calle` TEXT, `casa` TEXT, `piso` TEXT, `apartamento` TEXT, `jefe` TEXT, `otraReferencia` TEXT, `resultadoId` INTEGER NOT NULL, `fechaCreacion` TEXT, `fechaModificacion` TEXT, `flagEnvio` INTEGER NOT NULL, `flagPrimerEnvio` INTEGER NOT NULL, `estado_cuestionario` INTEGER NOT NULL, `erroresEstructura` TEXT, `fechaEntrada` TEXT, PRIMARY KEY(`entrevistaId`), FOREIGN KEY(`muestraId2`) REFERENCES `muestra`(`muestraId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
-            "fieldPath": "llave",
-            "columnName": "llave",
+            "fieldPath": "entrevistaId",
+            "columnName": "entrevistaId",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "codigoSegmento",
-            "columnName": "codigoSegmento",
+            "fieldPath": "entrevistaBaseId",
+            "columnName": "entrevistaBaseId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "muestraId",
+            "columnName": "muestraId2",
             "affinity": "TEXT",
             "notNull": false
           },
           {
-            "fieldPath": "provinciaID",
-            "columnName": "provinciaID",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "distritoID",
-            "columnName": "distritoID",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "corregimientoID",
-            "columnName": "corregimientoID",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "subzona",
-            "columnName": "subzona",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "segmento",
-            "columnName": "segmento",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "division",
-            "columnName": "division",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "empadronador",
-            "columnName": "empadronador",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "jefe",
-            "columnName": "jefe",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "numEmpadronador",
-            "columnName": "numEmpadronador",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "vivienda",
-            "columnName": "vivienda",
-            "affinity": "TEXT",
-            "notNull": false
+            "fieldPath": "entrevistaNum",
+            "columnName": "entrevistaNum",
+            "affinity": "INTEGER",
+            "notNull": true
           },
           {
             "fieldPath": "hogar",
             "columnName": "hogar",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "recorrido",
+            "columnName": "recorrido",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "identificacion",
+            "columnName": "identificacion",
             "affinity": "TEXT",
             "notNull": false
           },
@@ -375,20 +339,62 @@
             "notNull": false
           },
           {
+            "fieldPath": "notas",
+            "columnName": "notas",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
             "fieldPath": "datosJson",
             "columnName": "datosJson",
             "affinity": "TEXT",
             "notNull": false
           },
           {
-            "fieldPath": "erroresEstructura",
-            "columnName": "erroresEstructura",
+            "fieldPath": "lugarPoblado",
+            "columnName": "lugarPoblado",
             "affinity": "TEXT",
             "notNull": false
           },
           {
-            "fieldPath": "estado",
-            "columnName": "estado_cuestionario",
+            "fieldPath": "calle",
+            "columnName": "calle",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "casa",
+            "columnName": "casa",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "piso",
+            "columnName": "piso",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "apartamento",
+            "columnName": "apartamento",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "jefe",
+            "columnName": "jefe",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "otraReferencia",
+            "columnName": "otraReferencia",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "resultadoId",
+            "columnName": "resultadoId",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -405,18 +411,6 @@
             "notNull": false
           },
           {
-            "fieldPath": "fechaRecepcion",
-            "columnName": "fechaRecepcion",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "fechaEntrada",
-            "columnName": "fechaEntrada",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
             "fieldPath": "flagEnvio",
             "columnName": "flagEnvio",
             "affinity": "INTEGER",
@@ -429,45 +423,39 @@
             "notNull": true
           },
           {
-            "fieldPath": "notas",
-            "columnName": "notas",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "revisado",
-            "columnName": "revisado",
-            "affinity": "INTEGER",
-            "notNull": false
-          },
-          {
-            "fieldPath": "codigoECenso",
-            "columnName": "codigoEcenso",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "eCenso",
-            "columnName": "eCenso",
+            "fieldPath": "estado",
+            "columnName": "estado_cuestionario",
             "affinity": "INTEGER",
             "notNull": true
+          },
+          {
+            "fieldPath": "erroresEstructura",
+            "columnName": "erroresEstructura",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fechaEntrada",
+            "columnName": "fechaEntrada",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
           "autoGenerate": false,
           "columnNames": [
-            "llave"
+            "entrevistaId"
           ]
         },
         "indices": [
           {
-            "name": "index_cuestionarios_codigoSegmento",
+            "name": "index_cuestionarios_entrevistaBaseId",
             "unique": false,
             "columnNames": [
-              "codigoSegmento"
+              "entrevistaBaseId"
             ],
             "orders": [],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_cuestionarios_codigoSegmento` ON `${TABLE_NAME}` (`codigoSegmento`)"
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_cuestionarios_entrevistaBaseId` ON `${TABLE_NAME}` (`entrevistaBaseId`)"
           }
         ],
         "foreignKeys": [
@@ -476,7 +464,7 @@
             "onDelete": "CASCADE",
             "onUpdate": "NO ACTION",
             "columns": [
-              "codigoSegmento"
+              "muestraId2"
             ],
             "referencedColumns": [
               "muestraId"
@@ -617,12 +605,174 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "EntrevistaB",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`entrevistaId` TEXT NOT NULL, `muestraId` TEXT, `entrevistaNum` INTEGER NOT NULL, `hogar` INTEGER NOT NULL, `recorrido` TEXT, `identificacion` TEXT, `lugarPoblado` TEXT, `calle` TEXT, `casa` TEXT, `piso` TEXT, `apartamento` TEXT, `jefe` TEXT, `otraReferencia` TEXT, `resultadoId` INTEGER NOT NULL, `empadronadorId` TEXT, `fechaActualizacion` TEXT, `fechaAsignacion` INTEGER NOT NULL, `resultado` TEXT, `muestra` TEXT, `empadronador` TEXT, `estado_cuestionario` INTEGER NOT NULL, PRIMARY KEY(`entrevistaId`), FOREIGN KEY(`muestraId`) REFERENCES `muestra`(`muestraId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "entrevistaId",
+            "columnName": "entrevistaId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "muestraId",
+            "columnName": "muestraId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "entrevistaNum",
+            "columnName": "entrevistaNum",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hogar",
+            "columnName": "hogar",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "recorrido",
+            "columnName": "recorrido",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "identificacion",
+            "columnName": "identificacion",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "lugarPoblado",
+            "columnName": "lugarPoblado",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "calle",
+            "columnName": "calle",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "casa",
+            "columnName": "casa",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "piso",
+            "columnName": "piso",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "apartamento",
+            "columnName": "apartamento",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "jefe",
+            "columnName": "jefe",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "otraReferencia",
+            "columnName": "otraReferencia",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "resultadoId",
+            "columnName": "resultadoId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "empadronadorId",
+            "columnName": "empadronadorId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fechaActualizacion",
+            "columnName": "fechaActualizacion",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fechaAsignacion",
+            "columnName": "fechaAsignacion",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "resultado",
+            "columnName": "resultado",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "muestra",
+            "columnName": "muestra",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "empadronador",
+            "columnName": "empadronador",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "estado",
+            "columnName": "estado_cuestionario",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "entrevistaId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_EntrevistaB_muestraId",
+            "unique": false,
+            "columnNames": [
+              "muestraId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_EntrevistaB_muestraId` ON `${TABLE_NAME}` (`muestraId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "muestra",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "muestraId"
+            ],
+            "referencedColumns": [
+              "muestraId"
+            ]
+          }
+        ]
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '69290be7cb89e635787e75c5e864586c')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'faf4807fd3c886ff25a9cc71943f3140')"
     ]
   }
 }

@@ -42,9 +42,9 @@ public class ViviendaHogarViewModel extends ViewModel {
         return censoRepository.getCuestionariosBySegmentoVivienda(id);
     }
 
-    public LiveData<Cuestionarios> getCodigoECensoById(String llave) {
-        return censoRepository.getCodigoECensoById(llave);
-    }
+//    public LiveData<Cuestionarios> getCodigoECensoById(String llave) {
+//        return censoRepository.getCodigoECensoById(llave);
+//    }
 
 //    public LiveData<List<Cuestionarios>> getCuestionariosByVivienda(String viviendaID) {
 //        return censoRepository.getCuestionariosByVivienda(viviendaID);
@@ -91,9 +91,9 @@ public class ViviendaHogarViewModel extends ViewModel {
         return censoRepository.getCodigoECensoCall(cuestionarios);
     }*/
 
-    public LiveData<Resource<Cuestionarios>> getCodigoECensoCall(Cuestionarios cuestionarios) {
-        return censoRepository.getCodigoECensoCall(cuestionarios);
-    }
+//    public LiveData<Resource<Cuestionarios>> getCodigoECensoCall(Cuestionarios cuestionarios) {
+//        return censoRepository.getCodigoECensoCall(cuestionarios);
+//    }
 
     public void updateEstadoSegmento(String id) {
         censoRepository.updateEstadoSegmento(id);

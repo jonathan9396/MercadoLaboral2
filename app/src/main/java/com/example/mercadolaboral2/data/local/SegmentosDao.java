@@ -68,7 +68,7 @@ public interface  SegmentosDao {
     /* Todas las subzonas que tengan cuestionarios con estado >0 y flag envio =0 */
     @Query("SELECT * FROM Muestra S " +
             "INNER JOIN cuestionarios C " +
-            "ON S.muestraId = C.codigoSegmento " +
+            "ON S.muestraId = C.entrevistaId " +
             "WHERE C.flagPrimerEnvio  = 0 " +
             "AND C.flagEnvio = 0 AND C.estado_cuestionario > 0 " +
             " GROUP BY S.paR06_ID")
@@ -78,12 +78,12 @@ public interface  SegmentosDao {
             "ORDER BY muestraId ASC ")
     LiveData<List<Muestra>> getSegmentosSelected(String subZonaSelect);
 
-    @Query("SELECT COUNT(*) as totPendientes, codigoSegmento, subzona " +
+    @Query("SELECT COUNT(*) as totPendientes, entrevistaId, paR06_ID " +
             "FROM cuestionarios C " +
             "INNER JOIN Muestra S " +
-            "ON C.codigoSegmento = S.muestraId " +
+            "ON C.entrevistaId = S.muestraId " +
             "where S.paR06_ID= :subzona AND C.estado_cuestionario > 0 AND flagEnvio = 0 AND flagPrimerEnvio = 0 " +
-            "GROUP BY codigoSegmento ")
+            "GROUP BY entrevistaId ")
     LiveData<List<CuestionariosPendientes>> getSegmentosCuestionariosNoEnviados(String subzona);
 
     @Query("SELECT COUNT(*) as totPendientes, codigoSegmento " +
@@ -97,7 +97,7 @@ public interface  SegmentosDao {
     @Query("SELECT * " +
             "FROM cuestionarios C " +
             "INNER JOIN Muestra S " +
-            "ON C.codigoSegmento = S.muestraId " +
+            "ON C.muestraId2 = S.muestraId " +
             "where C.estado_cuestionario > 0 AND flagEnvio = 0 AND flagPrimerEnvio = 0 ")
     LiveData<List<Cuestionarios>> getSegmentosCuestionariosNoEnviados3();
 
@@ -112,7 +112,7 @@ public interface  SegmentosDao {
 
     @Query("SELECT * FROM Muestra S " +
             "INNER JOIN cuestionarios C " +
-            "ON S.muestraId = C.codigoSegmento " +
+            "ON S.muestraId = C.muestraId2 " +
             "WHERE C.flagEnvio  = 0 AND C.estado_cuestionario > 0 AND C.flagPrimerEnvio  = 0 " +
             "AND S.paR06_ID =:subzona " +
             "GROUP BY muestraId ")

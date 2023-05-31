@@ -20,16 +20,16 @@ import java.util.List;
 @Dao
 public interface CuestionariosDao {
 
-    @Query("SELECT * FROM cuestionarios where muestraId=:muestraId GROUP BY entrevistaNum ")
+    @Query("SELECT * FROM cuestionarios where muestraId2=:muestraId GROUP BY entrevistaNum ")
     LiveData<List<Cuestionarios>> getCuestionariosBySegmentoVivienda(String muestraId);
 
 
-    @Query("SELECT * FROM cuestionarios where muestraId=:muestraId " +
+    @Query("SELECT * FROM cuestionarios where muestraId2=:muestraId " +
             "ORDER BY entrevistaId")
     LiveData<List<Cuestionarios>> getCuestionariosBySegmento(String muestraId);
 
     @Query("SELECT * FROM cuestionarios " +
-            "where muestraId=:muestraId AND flagEnvio = 0 AND flagPrimerEnvio= 0 AND estado_cuestionario > 0")
+            "where muestraId2=:muestraId AND flagEnvio = 0 AND flagPrimerEnvio= 0 AND estado_cuestionario > 0")
 //true to 1 and false to 0.
     LiveData<List<Cuestionarios>> getCuestionariosBySegmentoNotSended(String  muestraId);
 
@@ -45,12 +45,12 @@ public interface CuestionariosDao {
     LiveData<List<Cuestionarios>> getAllCuestionarios();
 
     @RewriteQueriesToDropUnusedColumns
-    @Query("SELECT COUNT(*) AS totCuestionarios,  muestraId " +
+    @Query("SELECT COUNT(*) AS totCuestionarios,  muestraId2 " +
             " FROM cuestionarios " +
-            " GROUP BY muestraId")
+            " GROUP BY muestraId2")
     LiveData<List<TotCuestionarios>> getAllCuestionariosCapture();
 
-    @Query("SELECT * FROM cuestionarios where muestraId =:subzonaSelect " +
+    @Query("SELECT * FROM cuestionarios where muestraId2 =:subzonaSelect " +
             "ORDER BY entrevistaId")
     LiveData<List<Cuestionarios>> getAllCuestionariosByZona(String subzonaSelect);
 

@@ -15,8 +15,8 @@ import com.google.gson.annotations.SerializedName;
 @Entity(tableName = "cuestionarios",
         foreignKeys = {
                 @ForeignKey(onDelete = CASCADE, entity = Muestra.class,
-                        parentColumns = "muestraId", childColumns = "muestraId")},
-        indices = {@Index("codigoSegmento")})
+                        parentColumns = "muestraId", childColumns = "muestraId2")},
+        indices = {@Index("entrevistaBaseId")})
 public class Cuestionarios {
 
     @SerializedName("entrevistaId")
@@ -28,13 +28,12 @@ public class Cuestionarios {
 
     @SerializedName("entrevistaBaseId")
     @ColumnInfo(name = "entrevistaBaseId")
-    @PrimaryKey
     @NonNull
     @Expose
     private String entrevistaBaseId;
 
     @SerializedName("muestraId")
-    @ColumnInfo(name = "muestraId")
+    @ColumnInfo(name = "muestraId2")
     @Expose
     private String muestraId;
 
@@ -46,7 +45,7 @@ public class Cuestionarios {
     @SerializedName("hogar")
     @ColumnInfo(name = "hogar")
     @Expose
-    private int hogar;
+    private String hogar;
 
     @SerializedName("recorrido")
     @ColumnInfo(name = "recorrido")
@@ -141,10 +140,18 @@ public class Cuestionarios {
     @Expose
     private String erroresEstructura;
 
-    public Cuestionarios(@NonNull String entrevistaId, @NonNull String entrevistaBaseId, String muestraId, int entrevistaNum, int hogar,
+    @SerializedName("fechaEntrada")
+    @ColumnInfo(name = "fechaEntrada")
+    @Expose
+    private String fechaEntrada;
+
+
+
+
+    public Cuestionarios(@NonNull String entrevistaId, @NonNull String entrevistaBaseId, String muestraId, int entrevistaNum, String hogar,
                          String recorrido, String identificacion, String datos, String notas, String datosJson, String lugarPoblado,
                          String calle, String casa, String piso, String apartamento, String jefe, String otraReferencia, int resultadoId,
-                         String fechaCreacion, String fechaModificacion, boolean flagEnvio, boolean flagPrimerEnvio, int estado, String erroresEstructura) {
+                         String fechaCreacion, String fechaModificacion, boolean flagEnvio, boolean flagPrimerEnvio, int estado, String erroresEstructura, String fechaEntrada) {
 
         this.entrevistaId = entrevistaId;
         this.entrevistaBaseId = entrevistaBaseId;
@@ -170,6 +177,7 @@ public class Cuestionarios {
         this.flagPrimerEnvio = flagPrimerEnvio;
         this.estado=estado;
         this.erroresEstructura=erroresEstructura;
+        this.fechaEntrada=fechaEntrada;
     }
 
     @NonNull
@@ -206,11 +214,11 @@ public class Cuestionarios {
         this.entrevistaNum = entrevistaNum;
     }
 
-    public int getHogar() {
+    public String getHogar() {
         return hogar;
     }
 
-    public void setHogar(int hogar) {
+    public void setHogar(String hogar) {
         this.hogar = hogar;
     }
 
@@ -364,5 +372,13 @@ public class Cuestionarios {
 
     public void setErroresEstructura(String erroresEstructura) {
         this.erroresEstructura = erroresEstructura;
+    }
+
+    public String getFechaEntrada() {
+        return fechaEntrada;
+    }
+
+    public void setFechaEntrada(String fechaEntrada) {
+        this.fechaEntrada = fechaEntrada;
     }
 }

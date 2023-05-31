@@ -60,10 +60,13 @@ public class CaptureRecyclerViewAdapter
 
             Muestra muestra = muestraList.get(position);
 //            holder.tvSubZonaInfo.setText(muestra.getSubZonaID());
-            holder.tvSegmentoInfo.setText(String.format("%s - %s - %s",
-                    muestra.getLlave().substring(0, 6),
-                    muestra.getLlave().substring(6,8),
-                    muestra.getLlave().substring(8, 10)));
+            holder.tvSegmentoInfo.setText(String.format("%s - %s - %s - %s- %s",
+                    muestra.getLlave().substring(0, 2),
+                    muestra.getLlave().substring(2,4),
+                    muestra.getLlave().substring(4, 6),
+                    muestra.getLlave().substring(6, 8),
+                    muestra.getLlave().substring(8, 11)
+            ));
 
             String estado = "0";
             switch (muestra.getEstado()) {

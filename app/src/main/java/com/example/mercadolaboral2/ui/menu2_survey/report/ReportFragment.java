@@ -197,18 +197,18 @@ public class ReportFragment extends Fragment {
 
         if (cuestionarios.size() > 0) {
             for (Cuestionarios c : cuestionarios) {
-                if (c.getFechaAsignacion() > 0) {
+                if (c.getEstado() > 0) {
 
                     if (c.getHogar().equals("1")) {
                         totViviendaParticular += 1;
                     }
 
-                    if (Integer.parseInt(c.getHogar()) > 1 && c.getFechaAsignacion() > 0) {
+                    if (Integer.parseInt(c.getHogar()) > 1 && c.getEstado() > 0) {
                         hogaresAdicionales += 1;
                     }
 
-                    if (c.getEmpadronadorId() != null) {//0810020721002021 02 1
-                        JsonObject cuestionarioObject = new JsonParser().parse(c.getEmpadronadorId()).getAsJsonObject();
+                    if (c.getDatosJson() != null) {//0810020721002021 02 1
+                        JsonObject cuestionarioObject = new JsonParser().parse(c.getDatosJson()).getAsJsonObject();
 
                         try {
                             ocupadas += JsonQueriesCenso.INSTANCE.IsViviendaParticularOcupadaReporte(cuestionarioObject) ? 1 : 0;

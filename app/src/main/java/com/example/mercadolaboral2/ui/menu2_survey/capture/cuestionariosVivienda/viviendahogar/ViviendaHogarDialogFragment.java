@@ -89,6 +89,8 @@ public class ViviendaHogarDialogFragment extends Fragment
     private List<Cuestionarios> viviendaList;
     private List<Cuestionarios> hogarList;
     private List<List<Cuestionarios>> cuestionariosViviendaHogares;
+
+    private List<List<EntrevistaBase>> entrevistaViviendaHogares;
     private Cuestionarios cuestionarioSelected;
     private ViviendaHogarDialogAdapter viviendaHogarDialogAdapter;
     private ViviendaHogarViewModel viviendaHogarViewModel;
@@ -169,12 +171,15 @@ public class ViviendaHogarDialogFragment extends Fragment
 
         viviendaList = new ArrayList<>();
         cuestionariosViviendaHogares = new ArrayList<>();
+        entrevistaViviendaHogares = new ArrayList<>();
+
+
 
         Context context = view.getContext();
         RecyclerView recyclerView = view.findViewById(R.id.rvViviendasHogar);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         viviendaHogarDialogAdapter = new ViviendaHogarDialogAdapter(viviendaHogarViewModel, muestra,
-                cuestionariosViviendaHogares,this,, activity);
+                cuestionariosViviendaHogares, this,entrevistaViviendaHogares,activity);
         recyclerView.setAdapter(viviendaHogarDialogAdapter);
 
         setData();
@@ -325,9 +330,11 @@ public class ViviendaHogarDialogFragment extends Fragment
         popup.show();
     }
 
+
     private EntrevistaBase getNuevaVivienda(String numVivienda, String fecha) {
+        String entrevistab =muestra.getLlave() + numVivienda + "1";
         return new EntrevistaBase(
-                muestra.getLlave() + numVivienda + "1",
+                entrevistab,
                 muestra.getMuestraId(),
                 1,
                 1,
@@ -341,12 +348,13 @@ public class ViviendaHogarDialogFragment extends Fragment
                 null,
                 "1",
                 1,
+                "",
                 null,
-                fecha,
                 1,
                 null,
                 null,
-                null);
+                 null,
+        1);
     }
 
     private boolean verificarRed() {
@@ -391,11 +399,11 @@ public class ViviendaHogarDialogFragment extends Fragment
     }
 
     private void showErrorsDialog() {
-        if (cuestionarioSelected.getFechaActualizacion() != null
-                && !cuestionarioSelected.getFechaActualizacion().trim().equals("")) {
+        if (cuestionarioSelected.getErroresEstructura() != null
+                && !cuestionarioSelected.getErroresEstructura().trim().equals("")) {
             AlertDialog.Builder builder = new AlertDialog.Builder(activity);
             builder.setTitle(R.string.popup_listarerrores);
-            builder.setMessage(cuestionarioSelected.getFechaActualizacion());
+            builder.setMessage(cuestionarioSelected.getErroresEstructura());
             builder.setPositiveButton("OK", (dialog, which) -> Toast.makeText(activity,
                     "Lista de errores cerrado.", Toast.LENGTH_SHORT).show());
             AlertDialog dialog = builder.create();
@@ -454,67 +462,67 @@ public class ViviendaHogarDialogFragment extends Fragment
             if (!password.equals(AppConstants.CODIGO_ECENSO))
                 Toast.makeText(requireActivity(), "Contraseña incorrecta ",
                         Toast.LENGTH_SHORT).show();
-            else {
-                getCodigoECensoCall(cuestionarios, tvCodigoCenso);
-                Log.e(TAG, "onClick: ");
-            }
+//            else {
+//                getCodigoECensoCall(cuestionarios, tvCodigoCenso);
+//                Log.e(TAG, "onClick: ");
+//            }
         });
         madConfirmacion.setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss());
         madConfirmacion.show();
     }
 
-    private void getCodigoECensoCall(Cuestionarios cuestionarios, TextView tvCodigoCenso) {
-        processNotifier = new ProcessNotifier(activity);
-        processNotifier.inflate();
-        processNotifier.setTitle("Solicitud de código E-Censo");
-        processNotifier.setText("Verificando datos . . .");
-        flagCodigoObserver = true;
-        try {
-            viviendaHogarViewModel.getCodigoECensoCall(cuestionarios).observe(this,
-                    cuestionarioResponse -> {
-                        if (cuestionarioResponse.status.equals(Status.SUCCESS)) {
-                            if (flagCodigoObserver) {
-                                if (cuestionarioResponse.data != null) {
-                                    if (cuestionarioResponse.data.getCodigoECenso() != null) {
-                                        intentosCall = 0;
-                                        tvCodigoCenso.setText(cuestionarioResponse.data.getCodigoECenso());
-                                    } else {
-                                        if (cuestionarioResponse.data.getFechaActualizacion() != null) {
-                                            Utilidad.showMessageDialog("Error",
-                                                    "Error en descargar código E-Censo. "
-                                                            + cuestionarioResponse.data.getFechaActualizacion(),
-                                                    true, activity, R.raw.error_sign);
-                                        }
-                                    }
-                                }
-                            }
-                            flagCodigoObserver = false;
-                            processNotifier.deInflate();
-                            processNotifier.dismiss();
-                            viviendaHogarViewModel.getCodigoECensoCall(cuestionarios).removeObservers(this);
-                        }
-
-                        if (cuestionarioResponse.status.equals(Status.ERROR)) {
-                            if (flagCodigoObserver) {
-                                intentosCall++;
-                                if (intentosCall == 1) {
-                                    processNotifier.deInflate();
-                                    processNotifier.dismiss();
-                                    getCodigoECensoCall(cuestionarios, tvCodigoCenso);
-                                } else {
-                                    Utilidad.showMessageDialog("Error de red",
-                                            "Error al cargar código E-Censo. " + Objects.requireNonNull(cuestionarioResponse.message) + " | " +
-                                                    Objects.requireNonNull(cuestionarioResponse.data).getFechaActualizacion(),
-                                            true, activity, R.raw.error_sign);
-
-                                }
-                            }
-                        }
-                    });
-        } catch (Exception e) {
-            Log.e(TAG, "getCodigoECensoCall: ");
-        }
-    }
+//    private void getCodigoECensoCall(Cuestionarios cuestionarios, TextView tvCodigoCenso) {
+//        processNotifier = new ProcessNotifier(activity);
+//        processNotifier.inflate();
+//        processNotifier.setTitle("Solicitud de código E-Censo");
+//        processNotifier.setText("Verificando datos . . .");
+//        flagCodigoObserver = true;
+//        try {
+//            viviendaHogarViewModel.getCodigoECensoCall(cuestionarios).observe(this,
+//                    cuestionarioResponse -> {
+//                        if (cuestionarioResponse.status.equals(Status.SUCCESS)) {
+//                            if (flagCodigoObserver) {
+//                                if (cuestionarioResponse.data != null) {
+//                                    if (cuestionarioResponse.data.getCodigoECenso() != null) {
+//                                        intentosCall = 0;
+//                                        tvCodigoCenso.setText(cuestionarioResponse.data.getCodigoECenso());
+//                                    } else {
+//                                        if (cuestionarioResponse.data.getFechaActualizacion() != null) {
+//                                            Utilidad.showMessageDialog("Error",
+//                                                    "Error en descargar código E-Censo. "
+//                                                            + cuestionarioResponse.data.getFechaActualizacion(),
+//                                                    true, activity, R.raw.error_sign);
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                            flagCodigoObserver = false;
+//                            processNotifier.deInflate();
+//                            processNotifier.dismiss();
+//                            viviendaHogarViewModel.getCodigoECensoCall(cuestionarios).removeObservers(this);
+//                        }
+//
+//                        if (cuestionarioResponse.status.equals(Status.ERROR)) {
+//                            if (flagCodigoObserver) {
+//                                intentosCall++;
+//                                if (intentosCall == 1) {
+//                                    processNotifier.deInflate();
+//                                    processNotifier.dismiss();
+//                                    getCodigoECensoCall(cuestionarios, tvCodigoCenso);
+//                                } else {
+//                                    Utilidad.showMessageDialog("Error de red",
+//                                            "Error al cargar código E-Censo. " + Objects.requireNonNull(cuestionarioResponse.message) + " | " +
+//                                                    Objects.requireNonNull(cuestionarioResponse.data).getFechaActualizacion(),
+//                                            true, activity, R.raw.error_sign);
+//
+//                                }
+//                            }
+//                        }
+//                    });
+//        } catch (Exception e) {
+//            Log.e(TAG, "getCodigoECensoCall: ");
+//        }
+//    }
 
     private void showDeleteDialog(Cuestionarios cuestionarioSelected) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
@@ -630,7 +638,7 @@ public class ViviendaHogarDialogFragment extends Fragment
                     + "/files/csentry/C" + idDAT).exists()) {
                 launchIntentCsPro(cuestionarioID, csEntryDirectory, parametro);
 //                casos = LeerLineas(cuestionarioID, inputDataPath);
-            } else if (cuestionarios.getResultadoId() != null) {
+            } else if (cuestionarios.getDatos() != null) {
                 crearDat(cuestionarios, inputDataPath);
                 fileAccessHelper.pushFiles(inputDataPath2,
                         "C" + idDAT,
@@ -745,8 +753,8 @@ public class ViviendaHogarDialogFragment extends Fragment
             }
 
             int comparacionDatos = 1;
-            if (cuestionarioSelected.getResultadoId() != null)
-                comparacionDatos = fileDats.substring(1).compareTo(cuestionarioSelected.getResultadoId());
+            if (cuestionarioSelected.getDatos() != null)
+                comparacionDatos = fileDats.substring(1).compareTo(cuestionarioSelected.getDatos());
             cuestionarioSelected.setFechaEntrada(sdf.format(date));
 
             if (countLineas == 1 && fileDats.length() > 10
@@ -759,7 +767,7 @@ public class ViviendaHogarDialogFragment extends Fragment
                 String jefe;
 
                 if (jsonObject.size() > 0) {
-                    cuestionarioSelected.setFechaAsignacion(getEstadoCuestionario(jsonObject));
+                    cuestionarioSelected.setEstado(getEstadoCuestionario(jsonObject));
                     StringBuilder errores = new StringBuilder();
                     ValidacionDeEstructuraCenso estructura = null;
                     try {
@@ -784,10 +792,10 @@ public class ViviendaHogarDialogFragment extends Fragment
                     } catch (Exception e) {
                         Snackbar.make(view, "Error en validación de ESTRUCTURA. " + e.getMessage(),
                                 Snackbar.LENGTH_SHORT).show();
-                        cuestionarioSelected.setFechaActualizacion(errores.toString());
+                        cuestionarioSelected.setErroresEstructura(errores.toString());
                     }
 
-                    cuestionarioSelected.setFechaActualizacion(errores.toString());
+                    cuestionarioSelected.setErroresEstructura(errores.toString());
 
                     try {
                         if (Integer.parseInt(cuestionarioSelected.getHogar()) > 1) {
@@ -816,10 +824,10 @@ public class ViviendaHogarDialogFragment extends Fragment
                         cuestionarioSelected.setPiso("");
                     }
 //                    resultado = resultado.replace("\"", "\\\"");
-                    cuestionarioSelected.setResultadoId(fileDats.toString());
+                    cuestionarioSelected.setDatos(fileDats.toString());
                     cuestionarioSelected.setNotas(fileDatsNot.toString());
-                    cuestionarioSelected.setEmpadronadorId(resultado);
-                    cuestionarioSelected.setMuestra(sdf.format(lastModified));
+                    cuestionarioSelected.setDatosJson(resultado);
+                    cuestionarioSelected.setFechaModificacion(sdf.format(lastModified));
 
                     processNotifier = new ProcessNotifier(activity);
                     if (cuestionarioSelected.isFlagPrimerEnvio()) {
